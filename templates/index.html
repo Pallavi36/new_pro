@@ -1,0 +1,28 @@
+<h1>Library Management System</h1>
+{%if user.is_authenticated %}
+{%if user.is_superuser%}
+<a href="addbook">Add Book</a>
+<a href="showbooks">Show Books</a>
+{%endif%}
+<p>{{user.first_name}}</p>
+<a href="logout">Logout</a>
+{%else%}
+<a href="signup">Sign Up</a>
+<a href="login">Login</a>
+{%endif%}
+{%for i in std%}
+<h4>Student Name : {{i.name}}</h4>
+<h4>Student Class : {{i.year}}</h4>
+<h4>Student Book : {{i.book}}</h4>
+<h4>Book Issued : {{i.dttime}}</h4>
+<hr/>
+{%endfor%}
+{%if messages%}
+{%for message in messages%}
+<script>
+{%if message.tags%}
+    window.alert('{{message}}');
+{%endif%}
+</script>
+{%endfor%}
+{%endif%}
